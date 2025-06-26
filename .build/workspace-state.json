@@ -1,0 +1,26 @@
+{
+  "object" : {
+    "artifacts" : [
+      {
+        "kind" : "xcframework",
+        "packageRef" : {
+          "identity" : "product-fruits-ios-sdk",
+          "kind" : "root",
+          "location" : "/Users/daku/Documents/Dev/product-fruits-ios-sdk",
+          "name" : "product-fruits-ios-sdk"
+        },
+        "path" : "/Users/daku/Documents/Dev/product-fruits-ios-sdk/.build/artifacts/product-fruits-ios-sdk/ProductfruitsKit/ProductfruitsKit.xcframework",
+        "source" : {
+          "checksum" : "91552d298abf600f3aeab52f92ab7aaf38c8b137ece33dc8d179a6faea02b3cf",
+          "type" : "remote",
+          "url" : "https://github.com/product-fruits/product-fruits-ios-sdk/releases/download/v0.1.1/ProductfruitsKit-0.1.1.zip"
+        },
+        "targetName" : "ProductfruitsKit"
+      }
+    ],
+    "dependencies" : [
+
+    ]
+  },
+  "version" : 6
+}

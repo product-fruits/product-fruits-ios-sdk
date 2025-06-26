@@ -1,0 +1,4 @@
+framework module ProductfruitsKit {
+  header "ProductfruitsKit-Swift.h"
+  requires objc
+}

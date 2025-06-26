@@ -1,0 +1,747 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
+// swift-module-flags: -target x86_64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name ProductfruitsKit
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import Combine
+import CoreGraphics
+import Foundation
+@_exported import Foundation/*.Bundle*/
+@_exported import Foundation/*.NSObject*/
+@_exported import Foundation/*.URL*/
+@_exported import Foundation/*.UUID*/
+import StoreKit
+import Swift
+import SwiftUI
+import UIKit
+import UserNotifications
+import WebKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import os.log
+import os
+public struct ActivityAnyCodable : Swift.Codable {
+  public let value: Any
+  public init(_ value: Any)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+extension ProductfruitsKit.ActivityAnyCodable : Swift.Equatable {
+  public static func == (lhs: ProductfruitsKit.ActivityAnyCodable, rhs: ProductfruitsKit.ActivityAnyCodable) -> Swift.Bool
+}
+public struct ActivityResponse : Swift.Decodable {
+  public let ok: Swift.Bool
+  public init(ok: Swift.Bool)
+  public init(from decoder: any Swift.Decoder) throws
+}
+@available(iOS 13.0, *)
+public class DebugLogger : Foundation.ObservableObject, ProductfruitsKit.Logging {
+  @Combine.Published @_projectedValueProperty($log) public var log: [ProductfruitsKit.DebugLogger.Log] {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  public var $log: Combine.Published<[ProductfruitsKit.DebugLogger.Log]>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  public init()
+  public func stringEncoded() -> Swift.String
+  public func debug(_ message: Swift.StaticString, _ args: any Swift.CVarArg...)
+  public func info(_ message: Swift.StaticString, _ args: any Swift.CVarArg...)
+  public func log(_ message: Swift.StaticString, _ args: any Swift.CVarArg...)
+  public func error(_ message: Swift.StaticString, _ args: any Swift.CVarArg...)
+  public func fault(_ message: Swift.StaticString, _ args: any Swift.CVarArg...)
+  @available(iOS 13.0, *)
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 13.0, *)
+extension ProductfruitsKit.DebugLogger {
+  public struct Log : Swift.Identifiable, Swift.Encodable {
+    public let id: Foundation.UUID
+    public let timestamp: Foundation.Date
+    public let level: ProductfruitsKit.DebugLogger.Level
+    public let message: Swift.String
+    public enum CodingKeys : Swift.CodingKey {
+      case timestamp, level, message
+      public static func == (a: ProductfruitsKit.DebugLogger.Log.CodingKeys, b: ProductfruitsKit.DebugLogger.Log.CodingKeys) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public init?(stringValue: Swift.String)
+      public init?(intValue: Swift.Int)
+      public var hashValue: Swift.Int {
+        get
+      }
+      public var intValue: Swift.Int? {
+        get
+      }
+      public var stringValue: Swift.String {
+        get
+      }
+    }
+    public func encode(to encoder: any Swift.Encoder) throws
+    @available(iOS 13.0, *)
+    public typealias ID = Foundation.UUID
+  }
+  public enum Level : Swift.String, Swift.Encodable, Swift.CaseIterable {
+    case debug, info, log, error, fault
+    public var description: Swift.String {
+      get
+    }
+    public var color: SwiftUICore.Color {
+      get
+    }
+    public init?(rawValue: Swift.String)
+    @available(iOS 13.0, *)
+    public typealias AllCases = [ProductfruitsKit.DebugLogger.Level]
+    @available(iOS 13.0, *)
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [ProductfruitsKit.DebugLogger.Level] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+@available(iOS 14.0, *)
+@_Concurrency.MainActor @preconcurrency public struct DebugLoggerView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(logger: ProductfruitsKit.DebugLogger)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  @available(iOS 14.0, *)
+  public typealias Body = @_opaqueReturnTypeOf("$s16ProductfruitsKit15DebugLoggerViewV4bodyQrvp", 0) __
+}
+@available(iOS 14.0, *)
+extension ProductfruitsKit.ProductFruits {
+  public func debugLoggerView() -> some SwiftUICore.View
+  
+}
+@available(iOS 14.0, *)
+extension ProductfruitsKit.ProductFruits {
+  @discardableResult
+  public func filterAndHandle(_ URLContexts: Swift.Set<UIKit.UIOpenURLContext>) -> Swift.Set<UIKit.UIOpenURLContext>
+  @discardableResult
+  public func didHandleURL(_ url: Foundation.URL) -> Swift.Bool
+  public func openToolPreview(globalId: Swift.String, completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class DismissButton : UIKit.UIButton {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func layoutSubviews()
+  @objc deinit
+}
+@available(iOS 14.0, *)
+open class Experience {
+  final public let id: Foundation.UUID
+  final public let name: Swift.String
+  final public let type: Swift.String
+  final public let publishedAt: Swift.Int?
+  final public let instanceID: Foundation.UUID
+  final public let qualificationReason: Swift.String?
+  final public let toolType: Swift.String?
+  final public let qualifiedExperience: ProductfruitsKit.QualifiedExperience?
+  public init(id: Foundation.UUID, name: Swift.String = "", type: Swift.String, publishedAt: Swift.Int? = nil, qualificationReason: Swift.String? = nil, toolType: Swift.String? = nil, qualifiedExperience: ProductfruitsKit.QualifiedExperience? = nil)
+  public struct StepIndex : Swift.Equatable, Swift.Comparable {
+    public let group: Swift.Int
+    public let item: Swift.Int
+    public init(group: Swift.Int, item: Swift.Int)
+    public static func < (lhs: ProductfruitsKit.Experience.StepIndex, rhs: ProductfruitsKit.Experience.StepIndex) -> Swift.Bool
+    public static func == (a: ProductfruitsKit.Experience.StepIndex, b: ProductfruitsKit.Experience.StepIndex) -> Swift.Bool
+  }
+  @objc deinit
+}
+public struct AnyCodable : Swift.Codable {
+  public let value: Any
+  public init(_ value: Any)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+@available(iOS 14.0, macOS 11.0, *)
+public struct ExperienceFactory {
+  public static func createExperience(from qualifiedExperience: ProductfruitsKit.QualifiedExperience) -> ProductfruitsKit.Experience
+}
+public enum ExperienceTrigger : Swift.Equatable, Swift.CustomStringConvertible {
+  case qualification(reason: Swift.String = "unknown")
+  case screenView
+  case eventTrigger
+  case showCall
+  case showRawCall
+  case preview
+  case deepLink
+  case launchExperienceAction(fromExperienceID: Foundation.UUID?)
+  case pushNotification(responseID: Swift.String?)
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: ProductfruitsKit.ExperienceTrigger, b: ProductfruitsKit.ExperienceTrigger) -> Swift.Bool
+}
+@available(iOS 14.0, *)
+public struct Experiment : Swift.Decodable {
+  public let experimentID: Foundation.UUID
+  public let experienceID: Foundation.UUID
+  public let group: Swift.String
+  public let contentType: Swift.String
+  public let goalID: Swift.String?
+  public var shouldExecute: Swift.Bool {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public protocol Logging {
+  func debug(_ message: Swift.StaticString, _ args: any Swift.CVarArg...)
+  func info(_ message: Swift.StaticString, _ args: any Swift.CVarArg...)
+  func log(_ message: Swift.StaticString, _ args: any Swift.CVarArg...)
+  func error(_ message: Swift.StaticString, _ args: any Swift.CVarArg...)
+  func fault(_ message: Swift.StaticString, _ args: any Swift.CVarArg...)
+}
+extension os.OSLog : ProductfruitsKit.Logging {
+  convenience public init(productfruitsCategory category: Swift.String)
+  public func debug(_ message: Swift.StaticString, _ args: any Swift.CVarArg...)
+  public func info(_ message: Swift.StaticString, _ args: any Swift.CVarArg...)
+  public func log(_ message: Swift.StaticString, _ args: any Swift.CVarArg...)
+  public func error(_ message: Swift.StaticString, _ args: any Swift.CVarArg...)
+  public func fault(_ message: Swift.StaticString, _ args: any Swift.CVarArg...)
+}
+extension os.OSLog {
+  public static let disabled: any ProductfruitsKit.Logging
+}
+@objc public class ProductFruitsState : ObjectiveC.NSObject {
+  @objc final public let version: Swift.String
+  @objc final public let projectCode: Swift.String
+  @objc final public let userID: Swift.String
+  @objc final public let isAnonymous: Swift.Bool
+  @objc final public let deviceID: Swift.String
+  @objc final public let sessionID: Swift.String?
+  @objc final public let isActive: Swift.Bool
+  @objc final public let lastUpdated: Swift.String
+  @objc public enum IdentificationStatus : Swift.Int {
+    case notIdentified = 0
+    case anonymous = 1
+    case identified = 2
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public var status: ProductfruitsKit.ProductFruitsState.IdentificationStatus {
+    @objc get
+  }
+  @objc public var statusDescription: Swift.String {
+    @objc get
+  }
+  @objc public init(version: Swift.String, projectCode: Swift.String, userID: Swift.String, isAnonymous: Swift.Bool, deviceID: Swift.String, sessionID: Swift.String?, isActive: Swift.Bool)
+  @objc public func toDictionary() -> [Swift.String : Any]
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(macOS 11.0, iOS 14.0, *)
+@objc public class StateNotificationManager : ObjectiveC.NSObject {
+  @objc public static func postStateChange(from sdk: ProductfruitsKit.ProductFruits)
+  @objc deinit
+}
+@available(macOS 11.0, iOS 14.0, *)
+@objc(ProductFruits) public class ProductFruits : ObjectiveC.NSObject {
+  final public let instanceId: Swift.String
+  final public let config: ProductfruitsKit.ProductFruits.Config
+  @objc public static func enableAutomaticPushConfig()
+  @objc public init(config: ProductfruitsKit.ProductFruits.Config)
+  @objc deinit
+  @objc public func identify(userID: Swift.String, username: Swift.String, firstName: Swift.String? = nil, lastName: Swift.String? = nil, signUpAt: Swift.String? = nil, role: Swift.String? = nil, additionalProperties: [Swift.String : Any]? = nil, completion: ((Swift.Bool, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func anonymous(completion: ((Swift.Bool, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func reset()
+  @objc public func setScreen(_ screenName: Swift.String?)
+  @objc public func getCurrentScreen() -> Swift.String?
+  @objc public func track(name: Swift.String, properties: [Swift.String : Any]? = nil, completion: ((Swift.Bool, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @nonobjc public func trackWithResult(name: Swift.String, properties: [Swift.String : Any]? = nil, completion: ((Swift.Result<ProductfruitsKit.ActivityResponse, any Swift.Error>) -> Swift.Void)? = nil)
+  public func checkHealth(completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  @objc public func show(experienceID: Swift.String, completion: ((Swift.Bool, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func showRaw(jsonString: Swift.String, completion: ((Swift.Bool, (any Swift.Error)?) -> Swift.Void)? = nil)
+  public func qualify(completion: @escaping (Swift.Result<ProductfruitsKit.ToolQualificationResponse, any Swift.Error>) -> Swift.Void)
+  public func submitFeedback(message: Swift.String, email: Swift.String? = nil, screenshotURL: Swift.String? = nil, metadata: [Swift.String : Any]? = nil, completion: ((Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)? = nil)
+  @objc public func submitFeedbackObjc(message: Swift.String, email: Swift.String? = nil, screenshotURL: Swift.String? = nil, metadata: [Swift.String : Any]? = nil, completion: ((Swift.Bool, (any Swift.Error)?) -> Swift.Void)? = nil)
+  public func getQualifiedTools(completion: @escaping (Swift.Result<[Swift.String], any Swift.Error>) -> Swift.Void)
+  @objc(sdkVersion) public static func version() -> Swift.String
+  @objc public func version() -> Swift.String
+  @objc public func enableDebugLogging(category: Swift.String = "general")
+  @objc public func disableDebugLogging()
+  @objc public func screen(title: Swift.String, properties: [Swift.String : Any]? = nil)
+  @objc public func group(groupID: Swift.String?, properties: [Swift.String : Any]? = nil)
+  @objc public func setPushToken(_ deviceToken: Foundation.Data)
+  @objc public func getPushToken() -> Swift.String?
+  @objc public func didReceiveNotification(response: UserNotifications.UNNotificationResponse, completionHandler: @escaping () -> Swift.Void) -> Swift.Bool
+  @objc public func loadToolPreview(globalId: Swift.String, completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  @objc public func loadTool(globalId: Swift.String, completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  @objc public static func addStateChangeNotificationObserver(_ observer: Any, selector: ObjectiveC.Selector) -> any ObjectiveC.NSObjectProtocol
+  @objc public static func addStateChangeObserver(queue: Foundation.OperationQueue? = nil, using block: @escaping (Foundation.Notification) -> Swift.Void) -> any ObjectiveC.NSObjectProtocol
+  @objc public static func addStateChangeObserverWithDictionary(queue: Foundation.OperationQueue? = nil, using block: @escaping ([Swift.String : Any]?) -> Swift.Void) -> any ObjectiveC.NSObjectProtocol
+  @objc public static func removeStateChangeNotificationObserver(_ token: any ObjectiveC.NSObjectProtocol)
+  @objc public static func getStateFromNotification(_ notification: Foundation.Notification) -> ProductfruitsKit.ProductFruitsState?
+  @objc public static func getInstanceIdFromNotification(_ notification: Foundation.Notification) -> Swift.String?
+  @objc public func getCurrentState() -> ProductfruitsKit.ProductFruitsState
+  @objc public static func stateChangedNotificationName() -> Swift.String
+  @objc public static func getStateDictionaryFromNotification(_ notification: Foundation.Notification) -> [Swift.String : Any]?
+  @objc public func sendPreviewNotification(experienceID: Swift.String, completion: ((Swift.Bool, (any Swift.Error)?) -> Swift.Void)? = nil)
+}
+@available(macOS 11.0, iOS 14.0, *)
+extension ProductfruitsKit.ProductFruits {
+  @objc dynamic public func getBaseEnvUrl() -> Foundation.URL
+}
+@objc public enum ProductFruitsError : Swift.Int, Swift.Error {
+  case userNotIdentified
+  case invalidToolId
+  case invalidConfiguration
+  case invalidResponse
+  case networkError
+  case invalidUsername
+  case sdkNotAvailable
+  case activityProcessingFailed
+  case unsupportedOSVersion
+  case internalError
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension ProductfruitsKit.ProductFruits {
+  @available(macOS 11.0, iOS 14.0, *)
+  @objc public class Config : ObjectiveC.NSObject {
+    final public let projectCode: Swift.String
+    final public let applicationID: Swift.String
+    final public let language: Swift.String
+    public var anonymousIDFactory: () -> Swift.String
+    public var activityStorageMaxSize: Swift.UInt
+    public var activityStorageMaxAge: Swift.UInt?
+    @objc public init(projectCode: Swift.String, applicationID: Swift.String, language: Swift.String)
+    @discardableResult
+    @objc public func logging(_ enabled: Swift.Bool) -> Self
+    @discardableResult
+    @objc public func logging(_ enabled: Swift.Bool, category: Swift.String) -> Self
+    @discardableResult
+    @objc public func apiHost(_ apiHost: Foundation.URL) -> Self
+    @discardableResult
+    @objc public func urlSession(_ urlSession: Foundation.URLSession) -> Self
+    @discardableResult
+    @objc public func trustLocalhostCertificates() -> Self
+    @discardableResult
+    public func anonymousIDFactory(_ factory: @escaping () -> Swift.String) -> Self
+    @discardableResult
+    @objc public func deviceProperties(_ deviceProperties: [Swift.String : Any]) -> Self
+    @discardableResult
+    @objc public func setEnvironmentUrl(_ environmentUrl: Foundation.URL) -> Self
+    @discardableResult
+    @objc public func activityStorageMaxSize(_ maxSize: Swift.UInt) -> Self
+    @discardableResult
+    @objc public func activityStorageMaxAge(_ maxAgeSeconds: Swift.UInt) -> Self
+    @discardableResult
+    @objc public func setUserLanguage(_ language: Swift.String) -> Self
+    @objc deinit
+  }
+}
+@available(iOS 14.0, *)
+public struct QualifiedExperience : Swift.Decodable {
+  public let id: Foundation.UUID
+  public let name: Swift.String?
+  public let type: Swift.String
+  public let toolType: Swift.String?
+  public let descriptor: ProductfruitsKit.AnyCodable?
+  public let rules: [ProductfruitsKit.Rule]?
+  public let qualificationReason: Swift.String?
+  public let priority: ProductfruitsKit.RenderPriority?
+  public let experiment: ProductfruitsKit.ExperienceExperiment?
+  public init(id: Foundation.UUID, name: Swift.String?, type: Swift.String, toolType: Swift.String? = nil, descriptor: ProductfruitsKit.AnyCodable? = nil, rules: [ProductfruitsKit.Rule]? = nil, qualificationReason: Swift.String? = nil, priority: ProductfruitsKit.RenderPriority? = nil, experiment: ProductfruitsKit.ExperienceExperiment? = nil)
+  public init(from decoder: any Swift.Decoder) throws
+  public var model: ProductfruitsKit.Experience {
+    get
+  }
+}
+@available(iOS 14.0, *)
+public struct Rule : Swift.Decodable {
+  public let type: Swift.String
+  public let config: [Swift.String : ProductfruitsKit.AnyCodable]?
+  public init(from decoder: any Swift.Decoder) throws
+}
+@available(iOS 14.0, *)
+public struct ExperienceExperiment : Swift.Decodable {
+  public let group: Swift.String
+  public let experimentID: Foundation.UUID
+  public let experienceID: Foundation.UUID
+  public let goalID: Swift.String?
+  public let contentType: Swift.String?
+  public init(from decoder: any Swift.Decoder) throws
+}
+@available(iOS 14.0, *)
+public struct QualifyResponse {
+  public enum QualificationReason : Swift.String, Swift.Decodable {
+    case forced
+    case eventTrigger
+    case pageView
+    case screenView
+    case identify
+    public init?(rawValue: Swift.String)
+    @available(iOS 14.0, *)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum Priority {
+    case low
+    case normal
+    public static func == (a: ProductfruitsKit.QualifyResponse.Priority, b: ProductfruitsKit.QualifyResponse.Priority) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let experiences: [ProductfruitsKit.QualifiedExperience]
+  public let performedQualification: Swift.Bool
+  public let qualificationReason: ProductfruitsKit.QualifyResponse.QualificationReason?
+  public init(experiences: [ProductfruitsKit.QualifiedExperience], performedQualification: Swift.Bool, qualificationReason: ProductfruitsKit.QualifyResponse.QualificationReason?)
+  public var renderPriority: ProductfruitsKit.QualifyResponse.Priority {
+    get
+  }
+}
+extension ProductfruitsKit.QualifyResponse : Swift.Decodable {
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum RenderPriority : Swift.String, Swift.Decodable {
+  case low
+  case normal
+  case high
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct SiteConfigResponse : Swift.Codable {
+  public let qualifiedTools: ProductfruitsKit.QualifiedTools
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct QualifiedTools : Swift.Codable {
+  public let experiences: [ProductfruitsKit.MobileQualifiedExperience]
+  public let performedQualification: Swift.Bool
+  public let qualificationReason: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct MobileQualifiedExperience : Swift.Codable {
+  public let id: Swift.String
+  public let type: Swift.String
+  public let descriptor: ProductfruitsKit.ExperienceDescriptor
+  public let rules: ProductfruitsKit.RulesDescriptor
+  public let qualificationReason: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ExperienceDescriptor : Swift.Codable {
+  public let id: Swift.String
+  public let createdAt: Swift.String
+  public let lastUpdatedAt: Swift.String
+  public let descriptor: ProductfruitsKit.AnnouncementV2
+  public let type: Swift.Int
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RulesDescriptor : Swift.Codable {
+  public let condOp: Swift.String
+  public let rules: [ProductfruitsKit.RuleExpression]
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RuleExpression : Swift.Codable {
+  public let expression: ProductfruitsKit.Expression
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Expression : Swift.Codable {
+  public let prop: Swift.String
+  public let op: Swift.String
+  public let val: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AnnouncementV2 : Swift.Codable {
+  public let id: Swift.String
+  public let type: Swift.Int
+  public let segmentId: Swift.Int?
+  public let rulesId: Swift.Int?
+  public let rules: ProductfruitsKit.RulesDescriptor
+  public let urlFilter: ProductfruitsKit.AnnouncementURLFilter?
+  public let inclLocs: [Swift.String]?
+  public let steps: [ProductfruitsKit.MobileStep]?
+  public let header: ProductfruitsKit.MobileHeader?
+  public let config: ProductfruitsKit.MobileConfig?
+  public let notificationConfig: ProductfruitsKit.NotificationConfig?
+  public let createdAt: Swift.String
+  public let lastUpdatedAt: Swift.String
+  public let publishedAt: Swift.String?
+  public let publishedFrom: Swift.String?
+  public let publishedTo: Swift.String?
+  public let publishedFromOverride: Swift.String?
+  public let timeFrom: Swift.String?
+  public let timeTo: Swift.String?
+  public let timeZone: Swift.String?
+  public let renderCfg: ProductfruitsKit.AnnouncementRenderConfig?
+  public let userState: Swift.Int
+  public let repeatEvery: Swift.Int?
+  public let unreadAfterUserDaysAge: Swift.Int?
+  public let usersNotified: Swift.Bool?
+  public var experienceType: ProductfruitsKit.MobileExperienceType {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct NotificationConfig : Swift.Codable {
+  public let header: [Swift.String : Swift.String]?
+  public let content: [Swift.String : Swift.String]?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct MobileHeader : Swift.Codable {
+  public let head: Swift.Bool?
+  public let txt: [Swift.String : Swift.String]?
+  public let bg: Swift.String?
+  public let txtClr: Swift.String?
+  public let fontSize: Swift.String?
+  public let padding: Swift.String?
+  public let textAlign: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct MobileConfig : Swift.Codable {
+  public let dism: Swift.Bool?
+  public let notif: Swift.Bool?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DialogBackground : Swift.Codable {
+  public let bgColor: Swift.String?
+  public let wdgBgType: Swift.String?
+  public let wdgBg2: Swift.String?
+  public let wdgBgAng: Swift.String?
+  public let wdgImg: Swift.String?
+  public let wdgImgScale: Swift.String?
+  public let wdgImgOffsetX: Swift.String?
+  public let wdgImgOffsetY: Swift.String?
+  public let wdgImgFit: Swift.String?
+  public let textColor: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct MobileStep : Swift.Codable {
+  public let id: Swift.String?
+  public let header: ProductfruitsKit.MobileHeader?
+  public let primaryAction: ProductfruitsKit.MobilePrimaryAction?
+  public let cnts: [Swift.String : Swift.String]?
+  public let cntsJson: [Swift.String : Swift.String]?
+  public let coverImage: ProductfruitsKit.CoverImageConfig?
+  public let dialogBackground: ProductfruitsKit.DialogBackground?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct CoverImageConfig : Swift.Codable {
+  public let img: Swift.String?
+  public let bgColor: Swift.String?
+  public let fit: Swift.String?
+  public let offsetX: Swift.Int?
+  public let offsetY: Swift.Int?
+  public let scale: Swift.Double?
+  public let enabled: Swift.Bool?
+  public let heightPercent: Swift.Int?
+  public init(img: Swift.String? = nil, bgColor: Swift.String? = "#f0f0f0", fit: Swift.String? = "cover", offsetX: Swift.Int? = 0, offsetY: Swift.Int? = 0, scale: Swift.Double? = 1.0, enabled: Swift.Bool? = false, heightPercent: Swift.Int? = 20)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct MobilePrimaryAction : Swift.Codable {
+  public let pos: Swift.String?
+  public let type: Swift.String?
+  public let url: Swift.String?
+  public let txt: [Swift.String : Swift.String]?
+  public let clckDism: Swift.Bool?
+  public let border: ProductfruitsKit.Border?
+  public let lookBg: Swift.String?
+  public let lookTxtClr: Swift.String?
+  public let lookLightBg: Swift.String?
+  public let lookDarkBg: Swift.String?
+  public let paddingTop: Swift.String?
+  public let paddingBottom: Swift.String?
+  public let hasPrimary: Swift.Bool?
+  public let customAction: Swift.String?
+  public let relId: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Border : Swift.Codable {
+  public let br: Swift.String?
+  public let bw: Swift.String?
+  public let bc: Swift.String?
+  public let bp: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AnnouncementURLFilter : Swift.Codable {
+  public let type: Swift.String?
+  public let urls: [ProductfruitsKit.AnnouncementURLPattern]?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AnnouncementURLPattern : Swift.Codable {
+  public let parametrized: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct GlowConfig : Swift.Codable {
+  public let enabled: Swift.Bool
+  public let color: Swift.String?
+  public let blurRadius: Swift.Double?
+  public let spread: Swift.Double?
+  public let opacity: Swift.Double?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PaginationConfig : Swift.Codable {
+  public let show: Swift.Bool?
+  public let showArrows: Swift.Bool?
+  public init(show: Swift.Bool? = true, showArrows: Swift.Bool? = true)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DismissConfig : Swift.Codable {
+  public let dismissOnAllSteps: Swift.Bool?
+  public init(dismissOnAllSteps: Swift.Bool? = false)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AnnouncementRenderConfig : Swift.Codable {
+  public let type: Swift.String?
+  public let border: ProductfruitsKit.Border?
+  public let backdrop: ProductfruitsKit.BackdropConfig?
+  public let maxWidth: Swift.String?
+  public let maxHeight: Swift.String?
+  public let fullscreenHeight: Swift.String?
+  public let safeArea: Swift.Bool?
+  public let heightAlignment: Swift.String?
+  public let glow: ProductfruitsKit.GlowConfig?
+  public let pagination: ProductfruitsKit.PaginationConfig?
+  public let dismissConfig: ProductfruitsKit.DismissConfig?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct BackdropConfig : Swift.Codable {
+  public let color: Swift.String?
+  public let opacity: Swift.Double?
+  public let blur: Swift.Bool?
+  public let image: Swift.String?
+  public let imageScale: Swift.String?
+  public let imageOffsetX: Swift.String?
+  public let imageOffsetY: Swift.String?
+  public let imageFit: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum MobileExperienceType : Swift.Int {
+  case modal
+  case fullscreen
+  case carousel
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct ToolContent : Swift.Decodable {
+  public let id: Swift.String
+  public let name: Swift.String
+  public let cnts: Swift.String?
+  public let cntsJson: Swift.String?
+  public let hdcnts: Swift.String?
+  public let additionalProperties: [Swift.String : ProductfruitsKit.AnyCodable]?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ToolQualificationResponse : Swift.Codable {
+  public let userId: Swift.String
+  public let qualifiedTools: [Swift.String]
+  public let qualifiedSegments: [Swift.String]
+  public let groupId: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @objc public class PFToolType : ObjectiveC.NSObject {
+  @objc public static let announcement: ProductfruitsKit.PFToolType
+  @objc final public let rawValue: Swift.String
+  @objc public static let compositeIdPrefix: Swift.String
+  @objc public static func createCompositeId(type: ProductfruitsKit.PFToolType, id: Swift.String) -> Swift.String
+  @objc public static func isCompositeId(_ string: Swift.String) -> Swift.Bool
+  @objc public static func extractTypeFromCompositeId(_ compositeId: Swift.String) -> ProductfruitsKit.PFToolType?
+  @objc public static func extractIdFromCompositeId(_ compositeId: Swift.String) -> Swift.String?
+  @objc public static func extractFromCompositeId(_ compositeId: Swift.String, typeOut: Swift.AutoreleasingUnsafeMutablePointer<ProductfruitsKit.PFToolType?>, idOut: Swift.AutoreleasingUnsafeMutablePointer<Foundation.NSString?>) -> Swift.Bool
+  @objc deinit
+}
+public struct UserProfile : Swift.Codable {
+  public let userId: Swift.String
+  public let groupId: Swift.String?
+  public let properties: [Swift.String : ProductfruitsKit.AnyCodable]?
+  public let deviceID: Swift.String?
+  public let isAnonymous: Swift.Bool
+  public let buildin: ProductfruitsKit.UserProfile.BuildinProperties?
+  public let custom: [Swift.String : Any]?
+  public init(userID: Swift.String, deviceID: Swift.String?, isAnonymous: Swift.Bool, buildin: ProductfruitsKit.UserProfile.BuildinProperties?, custom: [Swift.String : Any]?)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public struct BuildinProperties : Swift.Codable {
+    public let username: Swift.String?
+    public let firstname: Swift.String?
+    public let lastname: Swift.String?
+    public let signUpAt: Swift.String?
+    public let role: Swift.String?
+    public init(username: Swift.String?, firstname: Swift.String?, lastname: Swift.String?, signUpAt: Swift.String?, role: Swift.String?)
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
+  }
+}
+@available(iOS 13.0, *)
+extension ProductfruitsKit.DebugLogger.Log.CodingKeys : Swift.Equatable {}
+@available(iOS 13.0, *)
+extension ProductfruitsKit.DebugLogger.Log.CodingKeys : Swift.Hashable {}
+@available(iOS 13.0, *)
+extension ProductfruitsKit.DebugLogger.Level : Swift.Equatable {}
+@available(iOS 13.0, *)
+extension ProductfruitsKit.DebugLogger.Level : Swift.Hashable {}
+@available(iOS 13.0, *)
+extension ProductfruitsKit.DebugLogger.Level : Swift.RawRepresentable {}
+@available(iOS 14.0, *)
+extension ProductfruitsKit.DebugLoggerView : Swift.Sendable {}
+extension ProductfruitsKit.ProductFruitsState.IdentificationStatus : Swift.Equatable {}
+extension ProductfruitsKit.ProductFruitsState.IdentificationStatus : Swift.Hashable {}
+extension ProductfruitsKit.ProductFruitsState.IdentificationStatus : Swift.RawRepresentable {}
+extension ProductfruitsKit.ProductFruitsError : Swift.Equatable {}
+extension ProductfruitsKit.ProductFruitsError : Swift.Hashable {}
+extension ProductfruitsKit.ProductFruitsError : Swift.RawRepresentable {}
+@available(iOS 14.0, *)
+extension ProductfruitsKit.QualifyResponse.QualificationReason : Swift.Equatable {}
+@available(iOS 14.0, *)
+extension ProductfruitsKit.QualifyResponse.QualificationReason : Swift.Hashable {}
+@available(iOS 14.0, *)
+extension ProductfruitsKit.QualifyResponse.QualificationReason : Swift.RawRepresentable {}
+@available(iOS 14.0, *)
+extension ProductfruitsKit.QualifyResponse.Priority : Swift.Equatable {}
+@available(iOS 14.0, *)
+extension ProductfruitsKit.QualifyResponse.Priority : Swift.Hashable {}
+extension ProductfruitsKit.RenderPriority : Swift.Equatable {}
+extension ProductfruitsKit.RenderPriority : Swift.Hashable {}
+extension ProductfruitsKit.RenderPriority : Swift.RawRepresentable {}
+extension ProductfruitsKit.MobileExperienceType : Swift.Equatable {}
+extension ProductfruitsKit.MobileExperienceType : Swift.Hashable {}
+extension ProductfruitsKit.MobileExperienceType : Swift.RawRepresentable {}
