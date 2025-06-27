@@ -98,8 +98,8 @@ struct YourApp: App {
 ### Basic User Identification
 
 ```swift
-// Identify user (both userID and username are required)
-productFruits.identify(userID: "user123", username: "user123") { success, error in
+// Identify user 
+productFruits.identify(username: "user123") { success, error in
     if success {
         print("User identified successfully")
     } else {
@@ -113,7 +113,6 @@ productFruits.identify(userID: "user123", username: "user123") { success, error 
 ```swift
 // Identify user with additional properties
 productFruits.identify(
-    userID: "user123",
     username: "john@example.com",
     firstName: "John",
     lastName: "Doe",
