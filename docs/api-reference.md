@@ -76,7 +76,7 @@ let productFruits = ProductFruits(config: config)
 
 ### User Identification
 
-#### identify(userID:username:firstName:lastName:signUpAt:role:additionalProperties:completion:)
+#### identify(username:firstName:lastName:signUpAt:role:additionalProperties:completion:)
 
 Identifies a user with the ProductFruits system.
 
@@ -110,7 +110,6 @@ productFruits.identify(
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `userID` | `String` | ✅ | Unique user identifier |
 | `username` | `String` | ✅ | Username or email |
 | `firstName` | `String?` | ❌ | User's first name |
 | `lastName` | `String?` | ❌ | User's last name |

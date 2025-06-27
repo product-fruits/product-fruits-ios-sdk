@@ -1,0 +1,15 @@
+{
+  "originHash" : "9882c0cd648807188bd59ff366be30984f3c5d01cc7ed60c2a7b3f016e7a72ee",
+  "pins" : [
+    {
+      "identity" : "product-fruits-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/product-fruits/product-fruits-ios-sdk.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "efa13b83244e1c94b9bfa5f3fb5f9a2af30a579c"
+      }
+    }
+  ],
+  "version" : 3
+}
