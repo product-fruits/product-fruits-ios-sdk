@@ -8,8 +8,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "ProductfruitsKit",
-            url: "https://github.com/product-fruits/product-fruits-ios-sdk/releases/download/v0.1.5/ProductfruitsKit-0.1.5.zip",
-            checksum: "72d4484ca020c6be006caef789d120f9388dd59207a7d95686970781862db4b5"
+            url: "https://github.com/product-fruits/product-fruits-ios-sdk/releases/download/v0.1.7/ProductfruitsKit-0.1.7.zip",
+            checksum: "951cda6e5d8a3471d7a9cb14833d80b226f12ea9d0ad5be11ea8852ff213bcaf"
         )
     ]
 )
